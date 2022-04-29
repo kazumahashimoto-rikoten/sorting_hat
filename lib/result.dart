@@ -10,7 +10,7 @@ class Result extends HookConsumerWidget {
     "somu": "総務",
     "zaimu": "財務",
     "kikaku": "企画",
-    "koho": "広報",
+    "koho": "広報"
   };
 
   @override

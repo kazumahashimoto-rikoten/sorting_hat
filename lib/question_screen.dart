@@ -11,6 +11,7 @@ class QuestionScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = useState(0);
+    Map score = {"joho": 0, "somu": 0, "zaimu": 0, "kikaku": 0, "koho": 0};
 
     return WillPopScope(
       onWillPop: () async => false, //スワイプで戻れないように
@@ -55,7 +56,7 @@ class QuestionScreen extends HookConsumerWidget {
                         // print(ref.read(quesProvider)['other_questions']);
                         return Text(nextQ.toString());
                       }
-                    })(), //Text(ref.watch(favProvider)[i.value]),
+                    })(),
                   ),
                 ),
                 Row(
