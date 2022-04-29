@@ -4,15 +4,6 @@ import 'package:sorting_hat/question_screen.dart';
 
 final helloWorldProvider = Provider((_) => 'Hello world'); //プロバイダにクラスを入れることもできる
 //複数指定できる
-final favProvider = Provider((ref) => [
-      '外に出ることが好き',
-      'みんなとワイワイするのが好き',
-      'まとめることが好き',
-      'パソコンを触ることが好き',
-      'お金の管理が好き',
-      'おしゃべりするのが好き',
-    ]);
-final countryProvider = Provider((ref) => 'England');
 
 void main() {
   runApp(
@@ -57,7 +48,7 @@ class StartPage extends HookConsumerWidget {
                       builder: (context) => QuestionScreen(),
                     ));
               },
-              child: Text(ref.watch(helloWorldProvider))),
+              child: Text('スタート')),
         ));
   }
 }
