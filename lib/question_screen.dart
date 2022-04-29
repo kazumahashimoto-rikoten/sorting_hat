@@ -72,7 +72,7 @@ class QuestionScreen extends HookConsumerWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Result(),
+                                  builder: (context) => Result("joho"),
                                 ));
                           }
                         },
@@ -104,7 +104,7 @@ class QuestionScreen extends HookConsumerWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Result(),
+                                  builder: (context) => Result("joho"),
                                 ));
                           }
                         },
