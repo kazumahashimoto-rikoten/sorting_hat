@@ -3,11 +3,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 var quesProvider = Provider((ref) => {
       'first_questions': [
         {
-          'question': '外に出ることが好き',
+          'question': '家の中にいるより外に出かける方が好き',
           'points': {'joho': 2, 'zaimu': 1, 'somu': 1, 'kikaku': 1, 'koho': 1},
         },
         {
-          'question': 'まとめることが好き',
+          'question': '普段からまとめることが好き',
           'points': {'joho': 2, 'zaimu': 1, 'somu': 1, 'kikaku': 1, 'koho': 1},
         },
       ],

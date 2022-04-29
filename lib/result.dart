@@ -3,9 +3,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sorting_hat/questions.dart';
 
 class Result extends HookConsumerWidget {
-  Result(this.department);
+  Result(this.department, {Key? key}) : super(key: key);
   final String department;
-  final department_map = {
+  final departmentMap = {
     "joho": "情報",
     "somu": "総務",
     "zaimu": "財務",
@@ -15,13 +15,13 @@ class Result extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final department_ja = department_map[department];
+    final departmentJa = departmentMap[department];
 
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('診断結果'),
+          title: const Text('診断結果'),
           automaticallyImplyLeading: false,
         ),
         body: Center(
@@ -35,28 +35,28 @@ class Result extends HookConsumerWidget {
                 ),
               ),
               Text(
-                '${department_ja}局です',
-                style: TextStyle(
+                '$departmentJa局です',
+                style: const TextStyle(
                   fontSize: 30,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Stack(
-                alignment: Alignment(-0.46, -0.48),
+                alignment: const Alignment(-0.46, -0.48),
                 children: [
                   Image.asset('images/22529281.jpg'),
                   Text(
-                    department_ja!.split('').join('\n'),
-                    style: TextStyle(
+                    departmentJa!.split('').join('\n'),
+                    style: const TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
-                        color: Colors.lightGreenAccent),
+                        color: Colors.deepOrangeAccent),
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               ElevatedButton(

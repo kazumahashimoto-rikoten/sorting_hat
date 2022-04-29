@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sorting_hat/question_screen.dart';
 
-final helloWorldProvider = Provider((_) => 'Hello world'); //プロバイダにクラスを入れることもできる
-//複数指定できる
-
 void main() {
   runApp(
     const ProviderScope(
@@ -18,8 +15,6 @@ class MyApp extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final String value = ref.watch(helloWorldProvider);
-
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -36,19 +31,16 @@ class StartPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('hoge'),
-        ),
         body: Center(
-          child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => QuestionScreen(),
-                    ));
-              },
-              child: Text('スタート')),
-        ));
+      child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => QuestionScreen(),
+                ));
+          },
+          child: Text('スタート')),
+    ));
   }
 }
