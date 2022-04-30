@@ -50,7 +50,7 @@ class StartPage extends HookConsumerWidget {
                       builder: (context) => QuestionScreen(),
                     ));
               },
-              child: Text('スタート')),
+              child: const Text('スタート')),
         ],
       ),
     ));

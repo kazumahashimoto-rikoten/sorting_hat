@@ -6,6 +6,7 @@ import 'package:sorting_hat/questions.dart';
 import 'package:flutter/services.dart';
 import 'dart:math' as math;
 
+// ignore: must_be_immutable
 class QuestionScreen extends HookConsumerWidget {
   QuestionScreen({Key? key}) : super(key: key);
   Map score = {"joho": 0, "somu": 0, "zaimu": 0, "kikaku": 0, "koho": 0};
@@ -13,7 +14,7 @@ class QuestionScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = useState(0);
-    var currentQuestion;
+    var currentQuestion = {};
     int? maxValue;
     String maxKey = '';
 
