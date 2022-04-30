@@ -3,28 +3,58 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 var quesProvider = Provider((ref) => {
       'first_questions': [
         {
-          'question': '家の中にいるより外に出かける方が好き',
-          'points': {'joho': 2, 'zaimu': 1, 'somu': 1, 'kikaku': 1, 'koho': 1},
+          'question': '家の中にいるより外に出かけるのが好き',
+          'points': {
+            'joho': -2,
+            'zaimu': -1,
+            'somu': 0,
+            'kikaku': 2,
+            'koho': 2,
+          },
         },
         {
-          'question': '普段からまとめることが好き',
-          'points': {'joho': 2, 'zaimu': 1, 'somu': 1, 'kikaku': 1, 'koho': 1},
+          'question': '普段から周りをまとめることが好き',
+          'points': {
+            'joho': 1,
+            'zaimu': 1,
+            'somu': 3,
+            'kikaku': 1,
+            'koho': 1,
+          },
         },
       ],
       'second_questions': [
         {
           'question': 'みんなとワイワイするのが好き',
-          'points': {'joho': 2, 'zaimu': 1, 'somu': 1, 'kikaku': 1, 'koho': 1},
+          'points': {
+            'joho': 2,
+            'zaimu': -1,
+            'somu': 0,
+            'kikaku': 3,
+            'koho': 3,
+          },
         },
         {
-          'question': 'パソコンを触ることが好き',
-          'points': {'joho': 2, 'zaimu': 1, 'somu': 1, 'kikaku': 1, 'koho': 1},
+          'question': 'パソコンはよく使う方だ',
+          'points': {
+            'joho': 5,
+            'zaimu': 3,
+            'somu': 2,
+            'kikaku': -2,
+            'koho': -2,
+          },
         },
       ],
       'other_questions': [
         {
           'question': 'ゲームすることが好き',
-          'points': {'joho': 2, 'zaimu': 1, 'somu': 1, 'kikaku': 1, 'koho': 1},
+          'points': {
+            'joho': 3,
+            'zaimu': -2,
+            'somu': -2,
+            'kikaku': 2,
+            'koho': 1,
+          },
         },
         {
           'question': '新しいものは気になってしまう',
@@ -43,7 +73,7 @@ var quesProvider = Provider((ref) => {
           'points': {'joho': 2, 'zaimu': 1, 'somu': 1, 'kikaku': 1, 'koho': 1},
         },
         {
-          'question': 'ものを作ったり、組み立てたりするのは好きな方だ',
+          'question': 'ものを作ったり組み立てたりするのは好きな方だ',
           'points': {'joho': 2, 'zaimu': 1, 'somu': 1, 'kikaku': 1, 'koho': 1},
         },
         {

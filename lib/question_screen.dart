@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sorting_hat/result.dart';
 import 'package:sorting_hat/questions.dart';
+import 'package:flutter/services.dart';
 import 'dart:math' as math;
 
 class QuestionScreen extends HookConsumerWidget {
@@ -112,11 +113,12 @@ class QuestionScreen extends HookConsumerWidget {
                           ),
                         ),
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.white,
-                            side: const BorderSide(
-                              color: Colors.blueAccent,
-                              width: 3,
-                            )),
+                          primary: Colors.white,
+                          side: const BorderSide(
+                            color: Colors.blueAccent,
+                            width: 3,
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -136,6 +138,7 @@ class QuestionScreen extends HookConsumerWidget {
         score[dept] = isYes ? score[dept] + point : score[dept] - point;
       });
       i.value += 1;
+      HapticFeedback.mediumImpact();
     } else {
       score.forEach((key, value) {
         if (maxValue == null || value > maxValue) {
@@ -144,10 +147,11 @@ class QuestionScreen extends HookConsumerWidget {
         }
       });
       Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Result(maxKey),
-          ));
+        context,
+        MaterialPageRoute(
+          builder: (context) => Result(maxKey),
+        ),
+      );
     }
   }
 }

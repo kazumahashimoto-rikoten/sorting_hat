@@ -32,15 +32,27 @@ class StartPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
         body: Center(
-      child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => QuestionScreen(),
-                ));
-          },
-          child: Text('スタート')),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            '局分け診断',
+            style: TextStyle(fontSize: 50),
+          ),
+          const SizedBox(
+            height: 100,
+          ),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => QuestionScreen(),
+                    ));
+              },
+              child: Text('スタート')),
+        ],
+      ),
     ));
   }
 }
