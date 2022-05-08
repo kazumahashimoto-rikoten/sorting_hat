@@ -6,10 +6,13 @@ import 'package:sorting_hat/questions.dart';
 import 'package:flutter/services.dart';
 import 'dart:math' as math;
 
+import 'decision_tree.dart';
+
 // ignore: must_be_immutable
 class QuestionScreen extends HookConsumerWidget {
   QuestionScreen({Key? key}) : super(key: key);
   Map score = {"joho": 0, "somu": 0, "zaimu": 0, "kikaku": 0, "koho": 0};
+  final allquesions = allQuesions();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -17,6 +20,9 @@ class QuestionScreen extends HookConsumerWidget {
     var currentQuestion = {};
     int? maxValue;
     String maxKey = '';
+    allquesions.then((value) => print(value)); //thenの中に書くと処理が終わってから実行される
+    var questions = [];
+    var answers = [];
 
     var selectQuestion = (() {
       if (i.value == 0) {

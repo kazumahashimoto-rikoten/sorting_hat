@@ -3,11 +3,22 @@ import 'package:ml_algo/ml_algo.dart';
 import 'package:ml_dataframe/ml_dataframe.dart';
 import 'package:ml_preprocessing/ml_preprocessing.dart';
 
-void decisionTree() async {
+Future<DataFrame> departmentData() async {
   final rawCsvContent =
       await rootBundle.loadString('assets/datasets/Department.csv');
+  return DataFrame.fromRawCsv(rawCsvContent);
+}
 
-  final samples = DataFrame.fromRawCsv(rawCsvContent)
+Future<List<String>> allQuesions() async {
+  DataFrame departmentCSV = await departmentData();
+  final headers =
+      departmentCSV.dropSeries(seriesNames: ['Name', 'Dept']).header;
+  return Future<List<String>>.value(headers.toList());
+}
+
+void decisionTree() async {
+  DataFrame departmentCSV = await departmentData();
+  final samples = departmentCSV
       .shuffle()
       .dropSeries(seriesNames: ['Name', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 'Q10']);
 
