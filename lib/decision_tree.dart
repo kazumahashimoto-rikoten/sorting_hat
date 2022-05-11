@@ -1,7 +1,9 @@
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ml_algo/ml_algo.dart';
 import 'package:ml_dataframe/ml_dataframe.dart';
 import 'package:ml_preprocessing/ml_preprocessing.dart';
+import 'package:sorting_hat/question_screen.dart';
 
 Future<DataFrame> departmentData() async {
   final rawCsvContent =
@@ -18,11 +20,15 @@ Future<List<String>> quesions() async {
   return Future<List<String>>.value(takenHeadrs);
 }
 
-Future<String?> decisionTree() async {
+Future<String?> decisionTree(WidgetRef ref) async {
   DataFrame departmentCSV = await departmentData();
-  final samples = departmentCSV
-      .shuffle()
-      .dropSeries(seriesNames: ['Name', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 'Q10']);
+  List ques = ref.watch(quesProvider);
+  var seriesNames = departmentCSV.header
+      .toList()
+      .where((element) => !ques.contains(element) && element != 'Dept')
+      .toList();
+  print(seriesNames);
+  final samples = departmentCSV.shuffle().dropSeries(seriesNames: seriesNames);
 
   String featureNames = 'Dept';
   final pipeline = Pipeline(samples, [
@@ -38,12 +44,12 @@ Future<String?> decisionTree() async {
   //文字と変更した数を把握するためのmap作る
   var nameSet = <String>{};
   for (var element in samples.rows) {
-    String featureName = element.elementAt(4);
+    String featureName = element.last;
     nameSet.add(featureName);
   }
   var indexSet = <int>{};
   for (var element in processed.rows) {
-    int featurenum = element.elementAt(4);
+    int featurenum = element.last;
     indexSet.add(featurenum);
   }
   print(nameSet);

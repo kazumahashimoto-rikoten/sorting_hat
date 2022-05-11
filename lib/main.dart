@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sorting_hat/question_screen.dart';
 
-import 'decision_tree.dart';
-
 void main() {
   runApp(
     const ProviderScope(
@@ -53,11 +51,6 @@ class StartPage extends HookConsumerWidget {
                     ));
               },
               child: const Text('スタート')),
-          ElevatedButton(
-              onPressed: () {
-                decisionTree();
-              },
-              child: const Text('決定木'))
         ],
       ),
     ));

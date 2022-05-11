@@ -141,15 +141,15 @@ class QuestionScreen extends HookConsumerWidget {
       print(ref.watch(quesProvider));
       print(ref.watch(ansProvider));
       HapticFeedback.heavyImpact();
-      decisionTree().then((value) {
+      decisionTree(ref).then((value) {
         print(value);
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => Result(value!)),
         );
+        ref.watch(quesProvider).clear();
+        ref.watch(ansProvider).clear();
       });
-      ref.watch(quesProvider).clear();
-      ref.watch(ansProvider).clear();
     } else {
       HapticFeedback.mediumImpact();
       i.value += 1;
