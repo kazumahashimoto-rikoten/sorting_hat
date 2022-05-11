@@ -6,11 +6,11 @@ class Result extends HookConsumerWidget {
   Result(this.department, {Key? key}) : super(key: key);
   final String department;
   final departmentMap = {
-    "joho": "情報",
-    "somu": "総務",
-    "zaimu": "財務",
-    "kikaku": "企画",
-    "koho": "広報"
+    "Joho": "情報",
+    "Somu": "総務",
+    "Zaimu": "財務",
+    "Kikaku": "企画",
+    "Koho": "広報"
   };
 
   @override

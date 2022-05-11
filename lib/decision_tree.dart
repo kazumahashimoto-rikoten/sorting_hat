@@ -9,14 +9,16 @@ Future<DataFrame> departmentData() async {
   return DataFrame.fromRawCsv(rawCsvContent);
 }
 
-Future<List<String>> allQuesions() async {
+Future<List<String>> quesions() async {
   DataFrame departmentCSV = await departmentData();
   final headers =
-      departmentCSV.dropSeries(seriesNames: ['Name', 'Dept']).header;
-  return Future<List<String>>.value(headers.toList());
+      departmentCSV.dropSeries(seriesNames: ['Name', 'Dept']).header.toList();
+  headers.shuffle();
+  final takenHeadrs = headers.take(7).toList();
+  return Future<List<String>>.value(takenHeadrs);
 }
 
-void decisionTree() async {
+Future<String?> decisionTree() async {
   DataFrame departmentCSV = await departmentData();
   final samples = departmentCSV
       .shuffle()
@@ -64,7 +66,7 @@ void decisionTree() async {
   final data = <Iterable>[
     ['Q1', 'Q2', 'Q3', 'Q4'],
     [1, 0, 1, 0], //テストデータ
-    [1, 1, 1, 0],
+    // [1, 1, 1, 0],
   ];
   final testData = DataFrame(data);
   final prediction = classifier.predict(testData);
@@ -72,6 +74,7 @@ void decisionTree() async {
   print(prediction.toMatrix());
   final predictionP = classifier.predictProbabilities(testData);
   print(predictionP.toMatrix());
+  return map[prediction.rows.first.first.toInt()];
 }
 
 Future<void> clcAccuracy(DataFrame processed, String featureNames) async {
