@@ -4,18 +4,18 @@ import 'package:sorting_hat/questions.dart';
 
 class Result extends HookConsumerWidget {
   Result(this.department, {Key? key}) : super(key: key);
-  final String department;
-  final departmentMap = {
-    "Joho": "情報",
-    "Somu": "総務",
-    "Zaimu": "財務",
-    "Kikaku": "企画",
-    "Koho": "広報"
-  };
+  final String? department;
+  // final departmentMap = {
+  //   "Joho": "情報",
+  //   "Somu": "総務",
+  //   "Zaimu": "財務",
+  //   "Kikaku": "企画",
+  //   "Koho": "広報"
+  // };
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final departmentJa = departmentMap[department];
+    // final departmentJa = departmentMap[department.toString()];
 
     return WillPopScope(
       onWillPop: () async => false,
@@ -35,7 +35,7 @@ class Result extends HookConsumerWidget {
                 ),
               ),
               Text(
-                '$departmentJa局です',
+                '$departmentです',
                 style: const TextStyle(
                   fontSize: 30,
                 ),
@@ -48,7 +48,7 @@ class Result extends HookConsumerWidget {
                 children: [
                   Image.asset('images/22529281.jpg'),
                   Text(
-                    departmentJa!.split('').join('\n'),
+                    department!.split('').join('\n'),
                     style: const TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,

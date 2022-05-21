@@ -21,13 +21,6 @@ class QuestionScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = useState(0);
-    // var currentQuestion = {};
-    // int? maxValue;
-    // String maxKey = '';
-
-    // allquesions.then((value) {
-    //   print(value);
-    // }); //thenの中に書くと処理が終わってから実行される
 
     return WillPopScope(
       onWillPop: () async => false, //スワイプで戻れないように
@@ -137,7 +130,7 @@ class QuestionScreen extends HookConsumerWidget {
   void onPressedCulc(
       ValueNotifier<int> i, WidgetRef ref, BuildContext context, int isYes) {
     ref.watch(ansProvider).add(isYes);
-    if (i.value == 6) {
+    if (i.value == 9) {
       print(ref.watch(quesProvider));
       print(ref.watch(ansProvider));
       HapticFeedback.heavyImpact();
@@ -145,7 +138,7 @@ class QuestionScreen extends HookConsumerWidget {
         print(value);
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Result(value!)),
+          MaterialPageRoute(builder: (context) => Result(value.toString())),
         );
         ref.watch(quesProvider).clear();
         ref.watch(ansProvider).clear();

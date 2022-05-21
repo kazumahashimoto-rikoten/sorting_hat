@@ -16,7 +16,7 @@ Future<List<String>> quesions() async {
   final headers =
       departmentCSV.dropSeries(seriesNames: ['Name', 'Dept']).header.toList();
   headers.shuffle();
-  final takenHeadrs = headers.take(7).toList();
+  final takenHeadrs = headers.take(10).toList();
   return Future<List<String>>.value(takenHeadrs);
 }
 
@@ -62,17 +62,15 @@ Future<String?> decisionTree(WidgetRef ref) async {
   final classifier = DecisionTreeClassifier(
     processed,
     featureNames,
-    minError: 0.3,
+    minError: 0.4,
     minSamplesCount: 5,
-    maxDepth: 4,
+    maxDepth: 5,
   );
 
   await clcAccuracy(processed, featureNames);
-
   final data = <Iterable>[
-    ['Q1', 'Q2', 'Q3', 'Q4'],
-    [1, 0, 1, 0], //テストデータ
-    // [1, 1, 1, 0],
+    ques,
+    ref.watch(ansProvider),
   ];
   final testData = DataFrame(data);
   final prediction = classifier.predict(testData);
@@ -95,9 +93,9 @@ Future<void> clcAccuracy(DataFrame processed, String featureNames) async {
   final createClassifier = (DataFrame processed) => DecisionTreeClassifier(
         processed,
         featureNames,
-        minError: 0.3,
+        minError: 0.4,
         minSamplesCount: 5,
-        maxDepth: 4,
+        maxDepth: 5,
       );
 
   final scores = await validator.evaluate(
